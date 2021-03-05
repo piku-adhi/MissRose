@@ -27,7 +27,7 @@ def time_to_seconds(time):
 def start(client, message):
     message.reply_text('👋 Hi. \nI can get you audio from youtube.🎶\n\nJust send me a keyword and I\'ll send you the audio from the first youtube link that I find.')
 
-@bot.on_message(filters.command(['a']))
+@bot.on_message(filters.command(['ytdl']))
 def a(client, message):
     query = ''
     for i in message.command[1:]:
