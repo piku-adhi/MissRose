@@ -1,5 +1,9 @@
 # © Mr_Dark_Prince
 from pyrogram import Client, filters
+from pyrogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup
+)
 import youtube_dl
 from youtube_search import YoutubeSearch
 import requests
@@ -25,9 +29,21 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 @bot.on_message(filters.command(['start']))
 def start(client, message):
-    message.reply_text(' Hoya. \n I will download YouTube songs .[🎶](https://telegra.ph/file/eccd64462fc8899d4ffc1.jpg)\n\nJust send me a keyword and I\'ll send you the audio from the first youtube link that I find and type /ytdl to download⏬\n⬇.')
+    darkprince = f'👋 Hello @{message.from_user.username}\n\n [😌🍀🤚](https://telegra.ph/file/86cc2e654b1157f12b94f.jpg)\n I\'m Rose, I can upload songs from YouTube. Type /a song name:'
+    message.reply_text(
+        text=darkprince, 
+        quote=False,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Owner🎸', url='https://t.me/mr_dark_prince'),
+                    InlineKeyboardButton('Source💿', url='https://github.com/Mr-Dark-Prince/MissRose')
+                ]
+            ]
+        )
+    )
 
-@bot.on_message(filters.command(['ytdl']))
+@bot.on_message(filters.command(['a']))
 def a(client, message):
     query = ''
     for i in message.command[1:]:
