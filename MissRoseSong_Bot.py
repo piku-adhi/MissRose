@@ -29,15 +29,16 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 @bot.on_message(filters.command(['start']))
 def start(client, message):
-    darkprince = f' HOI💛 @{message.from_user.firstname}\n\n [▶](https://telegra.ph/file/eccd64462fc8899d4ffc1.jpg)\n I\'m YouTube downloader, I can upload songs from YouTube.Type /ytdl song name:'
+    darkprince = f' HEYA {message.from_user.first_name}\n [🎵](https://telegra.ph/file/eccd64462fc8899d4ffc1.jpg)\n I\'m Youtube downloader, I can upload songs from YouTube. Type /ytdl song name \n if you want make my clone [DEPLOY](https://github.com/piku-adhi/MissRose)'
     message.reply_text(
         text=darkprince, 
         quote=False,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Owner🎸', url='https://t.me/Power_of_telegramx'),
-                    InlineKeyboardButton('Source💿', url='https://github.com/Mr-Dark-Prince/MissRose')
+                    InlineKeyboardButton('SUPPORT', url='https://t.me/music_plus_support'),
+                    InlineKeyboardButton('ADD TO GROUPS', url='https://t.me/youtube_d_loader_robot?startg=true')
+                                         
                 ]
             ]
         )
@@ -49,7 +50,7 @@ def a(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('🔎 Searching the song...')
+    m = message.reply('[🔎](https://telegra.ph/file/c802bd650b7b670013114.mp4) Searching the song...')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -83,17 +84,17 @@ def a(client, message):
             return
     except Exception as e:
         m.edit(
-            "✖️ Found Nothing. Sorry.\n\nTry another keywork or maybe spell it properly."
+            "[❌](https://telegra.ph/file/aa6cb0bff2a9a3c482785.jpg)found Nothing. Sorry.\nTry another keywork or maybe spell it properly."
         )
         print(str(e))
         return
-    m.edit("⏬ Downloading.")
+    m.edit("[⬇](https://telegra.ph/file/b5a4d35bd519233221bf5.gif)Downloading...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🎧 **Title**: [{title[:35]}]({link})\n⏳ **Duration**: `{duration}`\n👁‍🗨 **Views**: `{views}`'
+        rep = f'🎧 **Title**: [{title[:35]}]({link})\n**Duration**: `{duration}`\n👁‍🗨 **Views**: `{views}`\n **DOWNLOADED [🔽](https://telegra.ph/file/eccd64462fc8899d4ffc1.jpg) BY** @youtube_d_loader_robot'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -101,7 +102,7 @@ def a(client, message):
         message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('❌ Error')
+        m.edit('[❌](https://telegra.ph/file/d4319fa16e7d5a8f6a938.jpg)Error')
         print(e)
     try:
         os.remove(audio_file)
