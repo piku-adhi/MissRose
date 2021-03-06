@@ -29,7 +29,7 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 @bot.on_message(filters.command(['start']))
 def start(client, message):
-    darkprince = f' HEYA {message.from_user.first_name}\n [🎵](https://telegra.ph/file/eccd64462fc8899d4ffc1.jpg)\n I\'m Youtube downloader, I can upload songs from YouTube. Type /ytdl song name \n if you want make my clone [DEPLOY](https://github.com/piku-adhi/MissRose)'
+    darkprince = f' HEYA {message.from_user.username}\n [🎵](https://telegra.ph/file/eccd64462fc8899d4ffc1.jpg)\n I\'m Youtube downloader, I can upload songs from YouTube. Type /ytdl song name \n if you want make my clone [DEPLOY](https://github.com/piku-adhi/MissRose)'
     message.reply_text(
         text=darkprince, 
         quote=False,
@@ -50,7 +50,7 @@ def a(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('[🔎](https://telegra.ph/file/c802bd650b7b670013114.mp4) Searching the song...')
+    m = message.reply('🔎 [`](YOUR IMAGE/VIDEO/GIF TELEGRAPH LINK) Searching the song...')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -84,11 +84,11 @@ def a(client, message):
             return
     except Exception as e:
         m.edit(
-            "[❌](https://telegra.ph/file/aa6cb0bff2a9a3c482785.jpg)found Nothing. Sorry.\nTry another keywork or maybe spell it properly."
+            "❌found Nothing. Sorry.\nTry another keywork or maybe spell it properly."
         )
         print(str(e))
         return
-    m.edit("[⬇](https://telegra.ph/file/b5a4d35bd519233221bf5.gif)Downloading...")
+    m.edit("⬇[`]({link})Downloading...")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -102,7 +102,7 @@ def a(client, message):
         message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('[❌](https://telegra.ph/file/d4319fa16e7d5a8f6a938.jpg)Error')
+        m.edit('❌[`]{link}Error')
         print(e)
     try:
         os.remove(audio_file)
