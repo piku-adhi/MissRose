@@ -36,14 +36,14 @@ def start(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Owner🎸', url='https://t.me/mr_dark_prince'),
+                    InlineKeyboardButton('Owner🎸', url='https://t.me/Power_of_telegramx'),
                     InlineKeyboardButton('Source💿', url='https://github.com/Mr-Dark-Prince/MissRose')
                 ]
             ]
         )
     )
 
-@bot.on_message(filters.command(['a']))
+@bot.on_message(filters.command(['ytdl']))
 def a(client, message):
     query = ''
     for i in message.command[1:]:
