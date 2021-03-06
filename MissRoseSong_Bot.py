@@ -37,7 +37,7 @@ def start(client, message):
             [
                 [
                     InlineKeyboardButton('SUPPORT', url='https://t.me/music_plus_support'),
-                    InlineKeyboardButton('ADD TO GROUPS', url='https://t.me/youtube_d_loader_robot?startg=true')
+                    InlineKeyboardButton('ADD TO GROUPS', url='https://t.me/youtube_d_loader_robot?startgr=true')
                                          
                 ]
             ]
